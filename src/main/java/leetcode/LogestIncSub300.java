@@ -11,10 +11,13 @@ public class LogestIncSub300 {
         this.memo = new int[nums.length];
         this.nums = nums;
 
+        //循环查找
         for(int i = 0; i < nums.length; i++) {
             memo[i] = 1;
             tryFind(i);
         }
+
+        //return max
         int res = 1;
         for(int i = 0; i < memo.length; i++) {
             if(memo[i] > res ) {
