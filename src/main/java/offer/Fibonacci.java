@@ -17,6 +17,36 @@ public class Fibonacci {
     }
 
     /**
+     * 记忆化搜索
+     */
+    private static int[] mem;
+    public static int FibnacciMem(int n) {
+        if(n <= 0) {
+            return 0;
+        }
+        if(n == 1) {
+            return 1;
+        }
+        //为默认值0,说明未计算过，则递归计算，非0则直接返回计算值
+        if(mem[n] == 0) {
+            mem[n] = FibnacciMem(n-1) + FibnacciMem(n-2);
+        }
+        return mem[n];
+    }
+
+    /**
+     * 动态规划 自下而上解决
+     */
+    public static int Fib(int n) {
+        mem[0] = 0;
+        mem[1] = 1;
+        for(int i = 2; i <= n; i++) {
+            mem[i] = mem[i-1] + mem[i-2];
+        }
+        return mem[n];
+    }
+
+    /**
      * 斐波那契数列的非递归循环实现
      * @param n
      * @return
@@ -44,7 +74,18 @@ public class Fibonacci {
     }
 
     public static void main(String[] args) {
-        System.out.println(Fibonacci(2));
-        System.out.println(FibonacciCir(2));
+        int n = 40;
+        //注意此处数组的容量应该为n+1,因为存储着0-n的斐波那契值
+        mem = new int[n+1];
+
+        //也可用默认值0作为判空条件，因为0以后值都大于0
+//        for(int i = 0; i < n+1; i++) {
+//            mem[i] = -1;
+//        }
+
+        System.out.println(Fibonacci(n));
+        System.out.println(FibonacciCir(n));
+        System.out.println(FibnacciMem(n));
+        System.out.println(Fib(n));
     }
 }
