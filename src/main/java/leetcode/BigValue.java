@@ -1,6 +1,5 @@
 package leetcode;
 
-import java.math.BigDecimal;
 
 public class BigValue {
     private int[] weight;
