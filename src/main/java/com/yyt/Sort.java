@@ -56,6 +56,58 @@ public class Sort {
     }
 
     /**
+     * 希尔排序
+     */
+    public static void shellSort(int[] arr) {
+        int len = arr.length;
+        for(int gap = len/2; gap >= 1; gap = gap/2) {
+
+
+            for(int i = gap; i < len; i++) {
+                for(int j = i - gap; j >= 0 && arr[j] > arr[j + gap]; j = j - gap) {
+                    swap(arr, j, j + gap);
+                }
+            }
+        }
+    }
+
+    /**
+     * 直接插入排序
+     */
+    public static void insertSort1(int[] arr) {
+        for(int i = 1; i < arr.length; i++) {
+
+            for(int j = i - 1; j >= 0 && arr[j] > arr[j + 1]; j--) {
+                swap(arr, j, j+1);
+            }
+        }
+    }
+
+    /**
+     * 桶排序
+     */
+    public static void buckedSort(int[] arr) {
+        int max = Integer.MIN_VALUE;
+
+        for(int i = 0; i < arr.length; i++) {
+            max = Math.max(max, arr[i]);
+        }
+
+        int[] bucked = new int[max + 1];
+
+        for(int i = 0; i < arr.length; i++) {
+            bucked[arr[i]]++;
+        }
+
+        int k = 0;
+        for(int j = 0; j < bucked.length; j++) {
+            while (bucked[j]-- > 0) {
+                arr[k++] = j;
+            }
+        }
+    }
+
+    /**
      * 归并排序 自顶向下使用递归，将左右部分拷贝后按大小逐个放入数组中
      * 优化1： merge前先判断一下目前的左右是否已经有序，适用于几乎有序的数组
      * 优化2：小数组时使用插入排序
@@ -156,6 +208,7 @@ public class Sort {
         //优化选取的值，不采用第一个，随机选取一个，数学期望为nlogn
         int index = (int)Math.random()*(r - l) + l;
         int seed = list[index];
+        swap(list, l, index);
 
         int j = l;
         //此处i的初始值不能为l+2,虽然第二个值排序不动，但是指针j会+1，完成后面的swap(list[j], list[l]）
@@ -180,6 +233,7 @@ public class Sort {
     public static int partitionOpt(int[] list, int l, int r) {
         int index = (int)Math.random()*(r - l) + l;
         int seed = list[index];
+        swap(list, l, index);
 
         int i = l + 1;
         int j = r;
@@ -338,7 +392,7 @@ public class Sort {
             System.out.print(a);
         }
         System.out.println();
-        heapSort(arr, 0, arr.length - 1);
+        insertSort(arr);
         for(int a : arr) {
             System.out.print(a);
         }

@@ -31,6 +31,7 @@ public class TwoSum {
         int target = 0;
         int[] nums;
 
+
         while (in.hasNext()) {
             size = in.nextInt();
             nums = new int[size];

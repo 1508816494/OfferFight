@@ -203,13 +203,6 @@ public class BinarySearchTree {
         System.out.println(test.root);
         System.out.println(findDeep(test.root));
 
-            StringTokenizer st = new StringTokenizer("你好，中国");
-            while (st.hasMoreTokens()) {
-                System.out.println(st.nextToken());
-            }
-            List list = new ArrayList();
-            StringBuilder str = new StringBuilder();
-            System.out.println(Integer.MAX_VALUE);
 //        System.out.println(test.contain(4));
 //        System.out.println(test.root.toString());
 //

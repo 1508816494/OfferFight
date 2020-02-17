@@ -74,18 +74,15 @@ public class Fibonacci {
     }
 
     public static void main(String[] args) {
-        int n = 40;
+        int n = 4;
         //注意此处数组的容量应该为n+1,因为存储着0-n的斐波那契值
-        mem = new int[n+1];
+//        mem = new int[n+1];
+//        System.out.println(1<<30);
 
-        //也可用默认值0作为判空条件，因为0以后值都大于0
-//        for(int i = 0; i < n+1; i++) {
-//            mem[i] = -1;
-//        }
 
         System.out.println(Fibonacci(n));
         System.out.println(FibonacciCir(n));
-        System.out.println(FibnacciMem(n));
-        System.out.println(Fib(n));
+//        System.out.println(FibnacciMem(n));
+//        System.out.println(Fib(n));
     }
 }
